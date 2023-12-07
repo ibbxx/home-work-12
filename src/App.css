@@ -1,0 +1,140 @@
+
+
+
+/* Container styling */
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0; /* Remove top margin */
+  background: linear-gradient(to right, #121212, #1a202c);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* Board styling */
+.board {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+/* Square styling */
+.square {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem;
+  background-color: #2d3748;
+  border: 6px solid #4a5568;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff; /* Set text color to white */
+  cursor: pointer;
+  transition: background-color 0.5s ease, border 0.5s ease;
+}
+.square:hover {
+  background-color: #4a5568;
+}
+
+/* Blur effect for X and O */
+.square::before {
+  content: attr(data-value);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: transparent; /* Keep the text transparent */
+  filter: blur(5px);
+}
+
+/* Animasi untuk X dan O */
+.square.clicked::before {
+  animation: appear 0.5s ease forwards;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Status styling */
+.status {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Restart button styling */
+.restart-button {
+  margin-top: 0.75rem;
+  background-color: #3490dc;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #2779bd;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.restart-button:hover {
+  background-color: #2779bd;
+}
+
+/* Tailwind CSS classes (for compatibility) */
+.button {
+  padding: 0.75rem 1.5rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-blue {
+  background-color: #3490dc;
+  color: #ffffff;
+}
+
+.button-blue:hover {
+  background-color: #2779bd;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
